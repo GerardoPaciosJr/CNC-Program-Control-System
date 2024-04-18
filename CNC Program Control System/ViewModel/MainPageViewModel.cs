@@ -91,9 +91,10 @@ namespace CNC_Program_Control_System
         private readonly IBaseDBContext _BaseDBContext;
         #endregion
         public IAuthenticationService AuthenticationService { get; set; }
+        public IConfigService ConfigService { get; set; }
 
         #region Constructor
-        public MainPageViewModel(IBaseDBContext baseDBContext, IAuthenticationService authenticationService)
+        public MainPageViewModel(IBaseDBContext baseDBContext, IAuthenticationService authenticationService, IConfigService configService)
         {
             InitCommands();
 
@@ -102,6 +103,7 @@ namespace CNC_Program_Control_System
 
             _BaseDBContext = baseDBContext;
             AuthenticationService = authenticationService;
+            ConfigService = configService;
 
         }
         #endregion
@@ -115,15 +117,14 @@ namespace CNC_Program_Control_System
         }
         public async Task CreateDBAsync(object param)
         {
-            CreateDatabase(param);
-
-            await Task.Delay(0);
+            await CreateDatabase();
+            MessageBox.Show("Create Database", "Database Created!", MessageBoxButton.OK, MessageBoxImage.Information);
+            //await Task.Delay(0);
         }
         public async Task CreateTablesAsync(object param)
         {
-            CreateTables(param);
-
-            await Task.Delay(0);
+            await CreateTables();
+            MessageBox.Show("Create Tables", "Tables Created!", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         #endregion
 
@@ -157,45 +158,32 @@ namespace CNC_Program_Control_System
                 return true;
             }
 
-            MessageBox.Show("Test Connection", "Unable to connect to server. Please contact your network administrator", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Test Connection", "Unable to connect to server.", MessageBoxButton.OK, MessageBoxImage.Warning);
             return false;
 
         }
 
-        private void CreateDatabase(object param)
+        private async Task CreateDatabase()
         {
-            try
+            NewDatabaseModel databaseModel = new NewDatabaseModel
             {
+                DatabaseName = NewDatabaseName,
+                DatabaseUser = NewDBUsername, 
+                DatabasePassword = NewDBPassword
+            };
+            await ConfigService.CreateNewDBAsync(databaseModel);
+        }
 
-                //string connectionString = _BaseDBContext.ConnectionString;
-                using (SqlConnection connection = new SqlConnection(AuthenticationService.GetValidDBConnection()))
-                {
-                    connection.Open();
-                    string createDatabaseQuery = $"CREATE DATABASE {NewDatabaseName}";
-                    SqlCommand command = new SqlCommand(createDatabaseQuery, connection);
-                    command.CommandTimeout = 0;
-
-                    command.ExecuteNonQuery();
-
-                // Create User with Admin Permissions
-                string createUserQuery = $"CREATE LOGIN {NewDBUsername} WITH PASSWORD = '{NewDBPassword}';" +
-                                            $"USE {NewDatabaseName}; " +
-                                            $"CREATE USER {NewDBUsername} FOR LOGIN {NewDBUsername}; " +
-                                            $"ALTER ROLE db_owner ADD MEMBER {NewDBUsername};";
-
-                SqlCommand createUserCommand = new SqlCommand(createUserQuery, connection);
-                    createUserCommand.CommandTimeout = 60;
-                    createUserCommand.ExecuteNonQuery();
-
-                MessageBox.Show("Database Creation", "Database Creation Complete!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    UpdateDBConnectionSetting();
-                }
-                
-            }
-            catch (Exception ex)
+        private async Task CreateTables()
+        {
+            DatabaseCredentialModel databaseModel = new DatabaseCredentialModel
             {
-                MessageBox.Show(ex.Message);
-            }
+                ServerHostName = ServerHostName,
+                DatabaseName = DatabaseName,
+                UserID = DBUsername,
+                DatabasePassword = DBPassword
+            };
+            await ConfigService.CreateNewDBTablesAsync(databaseModel);
         }
 
         private void CreateTables(object param)
@@ -203,26 +191,25 @@ namespace CNC_Program_Control_System
             try
             {
 
-                string sqlFilePath = Directory.GetCurrentDirectory() + "\\tables.sql";
-                if (!File.Exists(sqlFilePath))
-                {
-                    MessageBox.Show("SQL file not found.");
-                    return;
-                }
+                //string sqlFilePath = Directory.GetCurrentDirectory() + "\\tables.sql";
+                //if (!File.Exists(sqlFilePath))
+                //{
+                //    MessageBox.Show("SQL file not found.");
+                //    return;
+                //}
 
-                GetDatabaseCredential(param);
+                //GetDatabaseCredential(param);
                 
-                string sqlScript = File.ReadAllText(sqlFilePath);
-                //string connectionString = _BaseDBContext.ConnectionString;
-                using (SqlConnection connection = new SqlConnection(AuthenticationService.IsValidDBConnectionString()))
-                {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlScript, connection);
-                    command.CommandTimeout = 60;
-                    command.ExecuteNonQuery();
+                //string sqlScript = File.ReadAllText(sqlFilePath);
+                //using (SqlConnection connection = new SqlConnection(AuthenticationService.IsValidDBConnectionString()))
+                //{
+                //    connection.Open();
+                //    SqlCommand command = new SqlCommand(sqlScript, connection);
+                //    command.CommandTimeout = 0;
+                //    command.ExecuteNonQuery();
 
-                    MessageBox.Show("Table Creation", "Table Creation Complete!", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+                //    MessageBox.Show("Table Creation", "Table Creation Complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+                //}
                 
 
                     

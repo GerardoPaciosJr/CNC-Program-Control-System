@@ -26,22 +26,22 @@ namespace CNC_Program_Control_System
                 }
             }
         }
-        public bool IsValidDBConnection(DatabaseCredentialModel databaseCredentialModel)
-        {
-            using (BaseDBContext ctx = new BaseDBContext())
-            {
-                //ctx.DatabaseCredential = DatabaseConnectionModel;// databaseCredentialModel;
-                try
-                {
-                    ctx.Database.BeginTransaction();
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                }
-            }
-        }
+        //public bool IsValidDBConnection(DatabaseCredentialModel databaseCredentialModel)
+        //{
+        //    using (BaseDBContext ctx = new BaseDBContext())
+        //    {
+        //        //ctx.DatabaseCredential = DatabaseConnectionModel;// databaseCredentialModel;
+        //        try
+        //        {
+        //            ctx.Database.BeginTransaction();
+        //            return true;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //}
         public string IsValidDBConnectionString()
         {
             using (BaseDBContext ctx = new BaseDBContext())
@@ -59,23 +59,23 @@ namespace CNC_Program_Control_System
             }
         }
 
-        public string GetValidDBConnection()
-        {
-            using (BaseDBContext ctx = new BaseDBContext())
-            {
-                //ctx.DatabaseCredential = DatabaseConnectionModel;
-                try
-                {
-                    //ctx.Database.SetCommandTimeout(0);
-                    //ctx.Database.BeginTransaction();
-                    return ctx.Database.GetConnectionString();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
+        //public string GetValidDBConnection()
+        //{
+        //    using (BaseDBContext ctx = new BaseDBContext())
+        //    {
+        //        //ctx.DatabaseCredential = DatabaseConnectionModel;
+        //        try
+        //        {
+        //            //ctx.Database.SetCommandTimeout(0);
+        //            //ctx.Database.BeginTransaction();
+        //            return ctx.GetConnectionString(); ctx.Database.GetDbConnection().ConnectionString;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //}
         public void CreateSQLConnectionModel(DatabaseCredentialModel model)
         {
 

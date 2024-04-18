@@ -15,7 +15,6 @@ namespace CNC_Program_Control_System
 
         public string ConnectionString { get; set; }
 
-        public IServiceProvider ServiceProvider { get; set; }
         public IConfiguration Configuration { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -61,61 +60,5 @@ namespace CNC_Program_Control_System
         {
             throw new System.NotImplementedException();
         }
-
-        public async Task<DataTable> ExecuteStoredProcedureAsync(string storedProcedureName, Dictionary<string, object> parameters)
-        {
-
-            DataTable dataTable = new DataTable();
-
-            var conn = this.Database.GetDbConnection();
-            await conn.OpenAsync();
-            var command = conn.CreateCommand();
-            string query = string.Format("{0};", storedProcedureName);
-            command.CommandText = query;
-            command.CommandType = CommandType.StoredProcedure;
-
-            foreach (var param in parameters)
-            {
-                var parameter = command.CreateParameter();
-                parameter.ParameterName = param.Key;
-                parameter.Value = param.Value;
-                command.Parameters.Add(parameter);
-            }
-
-            var reader = await command.ExecuteReaderAsync();
-            await Task.Run(() => dataTable.Load(reader));
-            await conn.CloseAsync();
-            return dataTable;
-        }
-
-        public async Task CreateDatabase(string NewDatabaseName, string NewDBUsername, string NewDBPassword)
-        {
-            try
-            {
-
-                using (SqlConnection connection = new SqlConnection(this.Database.GetDbConnection().ConnectionString))
-                {
-                    connection.Open();
-                    string createDatabaseQuery = $"CREATE DATABASE {NewDatabaseName}";
-                    SqlCommand command = new SqlCommand(createDatabaseQuery, connection);
-                    command.ExecuteNonQuery();
-
-                    // Create User with Admin Permissions
-                    string createUserQuery = $"CREATE LOGIN {NewDBUsername} WITH PASSWORD = '{NewDBPassword}';" +
-                                                $"USE {NewDatabaseName}; " +
-                                                $"CREATE USER {NewDBUsername} FOR LOGIN {NewDBUsername}; " +
-                                                $"ALTER ROLE db_owner ADD MEMBER {NewDBUsername};";
-
-                    SqlCommand createUserCommand = new SqlCommand(createUserQuery, connection);
-                    createUserCommand.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show("");
-            }
-        }
-
-
     }
 }

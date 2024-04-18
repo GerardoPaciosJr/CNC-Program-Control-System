@@ -40,13 +40,13 @@ namespace CNC_Program_Control_System
         private void RegisterRepositories(Container container)
         {
             container.Register(typeof(IBaseRepo<>), typeof(BaseRepo<>), Lifestyle.Scoped);
+            container.RegisterSingleton<IConfigRepo, ConfigRepo>();
         }
 
         private void RegisterServices(Container container)
         {
             //container.RegisterSingleton<IAppService, AppService>();
-            //container.RegisterSingleton<IUserServices, UserServices>();
-            //container.RegisterSingleton<IFormService, FormService>();
+            container.RegisterSingleton<IConfigService, ConfigService>();
         }
 
         protected override void Dispose(bool disposing)

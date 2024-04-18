@@ -1,5 +1,5 @@
 
-CREATE TABLE Permission (
+CREATE TABLE tblPermission (
     PermissionID INT PRIMARY KEY,
     DevelopmentApproval BIT,
     ProductionApproval BIT,
@@ -8,59 +8,59 @@ CREATE TABLE Permission (
     WriteToVault BIT
 );
 
-CREATE TABLE UserGroup (
+CREATE TABLE tblUserGroup (
     UserGroupID INT PRIMARY KEY,
     UserGroupName NVARCHAR(255),
-    PermissionID INT FOREIGN KEY REFERENCES Permission(PermissionID)
+    PermissionID INT FOREIGN KEY REFERENCES tblPermission(PermissionID)
 );
 
-CREATE TABLE Users (
+CREATE TABLE tblUsers (
     UserID INT PRIMARY KEY,
     UserName NVARCHAR(255),
     UserEmail NVARCHAR(255),
-    UserGroupID INT FOREIGN KEY REFERENCES UserGroup(UserGroupID)
+    UserGroupID INT FOREIGN KEY REFERENCES tblUserGroup(UserGroupID)
 );
 
-CREATE TABLE Head (
+CREATE TABLE tblHead (
     HeadID INT PRIMARY KEY,
     HeadName NVARCHAR(255),
     Destination NVARCHAR(255)
 );
 
 
-CREATE TABLE Machines (
+CREATE TABLE tblMachines (
     MachineID INT PRIMARY KEY,
     MachineName NVARCHAR(255),
-    HeadID INT FOREIGN KEY REFERENCES Head(HeadID),
+    HeadID INT FOREIGN KEY REFERENCES tblHead(HeadID),
     Details NVARCHAR(MAX)
 );
 
 
-CREATE TABLE MachineTypes (
+CREATE TABLE tblMachineTypes (
     MachineTypeID INT PRIMARY KEY,
     MachineTypeName NVARCHAR(255),
-    MachineID INT FOREIGN KEY REFERENCES Machines(MachineID)  -- To Confrim
+    MachineID INT FOREIGN KEY REFERENCES tblMachines(MachineID)  -- To Confrim
 );
 
 
-CREATE TABLE Operation (
+CREATE TABLE tblOperation (
     OperationID INT PRIMARY KEY,
     OperationNumber NVARCHAR(255),
-    MachineTypeID INT FOREIGN KEY REFERENCES MachineTypes(MachineTypeID)
+    MachineTypeID INT FOREIGN KEY REFERENCES tblMachineTypes(MachineTypeID)
 );
 
 
-CREATE TABLE Part (
+CREATE TABLE tblPart (
     PartID INT PRIMARY KEY,
     PartName NVARCHAR(255),
-    OperationID INT FOREIGN KEY REFERENCES Operation(OperationID),
+    OperationID INT FOREIGN KEY REFERENCES tblOperation(OperationID),
     --ApprovalListID INT FOREIGN KEY REFERENCES ApprovalList(ApprovalListID),
     ITARRestricted BIT,
     Revision NVARCHAR(50)
 );
 
 
-CREATE TABLE Status (
+CREATE TABLE tblStatus (
     StatusID INT PRIMARY KEY,
     Development BIT,
     Production BIT,
@@ -68,37 +68,37 @@ CREATE TABLE Status (
 );
 
 
-CREATE TABLE Revision (
+CREATE TABLE tblRevision (
     RevisionID INT PRIMARY KEY,
     RevisionNumber NVARCHAR(50),
-    CreatedByID INT FOREIGN KEY REFERENCES Users(UserID),
+    CreatedByID INT FOREIGN KEY REFERENCES tblUsers(UserID),
     CreationDate DATE,
-    RevisedByID INT FOREIGN KEY REFERENCES Users(UserID),
+    RevisedByID INT FOREIGN KEY REFERENCES tblUsers(UserID),
     RevisionDate DATE,
     Comment NVARCHAR(MAX),
     DatabasePath NVARCHAR(MAX),
-    StatusID INT FOREIGN KEY REFERENCES Status(StatusID)
+    StatusID INT FOREIGN KEY REFERENCES tblStatus(StatusID)
 );
 
 
-CREATE TABLE CNCProgram (
+CREATE TABLE tblCNCProgram (
     ProgramID INT PRIMARY KEY,
-    PartID INT FOREIGN KEY REFERENCES Part(PartID),
-    OperationID INT FOREIGN KEY REFERENCES Operation(OperationID),
-    MachineTypeID INT FOREIGN KEY REFERENCES MachineTypes(MachineTypeID),
-    HeadID INT FOREIGN KEY REFERENCES Head(HeadID), -- To Confrim
+    PartID INT FOREIGN KEY REFERENCES tblPart(PartID),
+    OperationID INT FOREIGN KEY REFERENCES tblOperation(OperationID),
+    MachineTypeID INT FOREIGN KEY REFERENCES tblMachineTypes(MachineTypeID),
+    HeadID INT FOREIGN KEY REFERENCES tblHead(HeadID), -- To Confrim
     OrderType NVARCHAR(50),
     ApprovalRequirements NVARCHAR(MAX),
     ProgramName NVARCHAR(255),
-    RevisionID INT FOREIGN KEY REFERENCES Revision(RevisionID)
+    RevisionID INT FOREIGN KEY REFERENCES tblRevision(RevisionID)
 );
 
 
-CREATE TABLE SendHistory (
+CREATE TABLE tblSendHistory (
     SendID INT PRIMARY KEY,
-    ProgramID INT FOREIGN KEY REFERENCES CNCProgram(ProgramID),
-    RevisionID INT FOREIGN KEY REFERENCES Revision(RevisionID),
-    SentByID INT FOREIGN KEY REFERENCES Users(UserID),
+    ProgramID INT FOREIGN KEY REFERENCES tblCNCProgram(ProgramID),
+    RevisionID INT FOREIGN KEY REFERENCES tblRevision(RevisionID),
+    SentByID INT FOREIGN KEY REFERENCES tblUsers(UserID),
     MachineSentTo NVARCHAR(255),
     HeadSentTo NVARCHAR(255),
     SendDate DATE

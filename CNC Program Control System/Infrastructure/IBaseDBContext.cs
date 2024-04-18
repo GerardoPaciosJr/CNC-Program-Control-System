@@ -15,9 +15,6 @@ namespace CNC_Program_Control_System
         Task BulkSave<T>(IEnumerable<T> entities) where T : class, new();
         DatabaseCredentialModel DatabaseCredential { get; set; }
 
-        Task<DataTable> ExecuteStoredProcedureAsync(string storedProcName, Dictionary<string, object> parameters);
-       
-
         int SaveChanges();
         string ConnectionString { get; set; }
       
