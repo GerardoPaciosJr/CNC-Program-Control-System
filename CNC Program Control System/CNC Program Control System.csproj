@@ -40,7 +40,9 @@
     <Resource Include="Images\features-scaled-3.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-    <Resource Include="tables.sql" />
+    <Content Include="tables.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

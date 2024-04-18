@@ -102,6 +102,7 @@
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
@@ -149,8 +150,9 @@
                                         <AdornerDecorator>
                                             <TextBox x:Name="_TextDBName" 
                                                      HorizontalAlignment="Stretch" 
-                                                     VerticalAlignment="Center"
-                                                     Text="{Binding DatabaseName}">
+                                                     VerticalAlignment="Center">
+                                                <Binding Path="DatabaseName" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
+                                                </Binding>
                                             </TextBox>
                                         </AdornerDecorator>
                                         <Border ></Border>
@@ -198,8 +200,9 @@
                                             <AdornerDecorator>
                                                 <TextBox x:Name="_TextDBUsername" 
                                                          HorizontalAlignment="Stretch" 
-                                                         VerticalAlignment="Center"
-                                                         Text="{Binding DBUsername}">
+                                                         VerticalAlignment="Center">
+                                                    <Binding Path="DBUsername" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
+                                                    </Binding>
                                                 </TextBox>
                                             </AdornerDecorator>
                                             <Border></Border>
@@ -225,8 +228,9 @@
                                             <AdornerDecorator>
                                                 <TextBox x:Name="_TextDBPassword"
                                                          HorizontalAlignment="Stretch" 
-                                                         VerticalAlignment="Center"
-                                                         Text="{Binding DBPassword}">
+                                                         VerticalAlignment="Center">
+                                                    <Binding Path="DBPassword" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
+                                                    </Binding>
                                                 </TextBox>
                                             </AdornerDecorator>
                                             <Border></Border>
@@ -257,6 +261,27 @@
                                                 ContentText="{StaticResource sTestConnection}" 
                                                 IsEnabled="{Binding IsNotBusy}">
                                         </Button>-->
+                                    </Grid>
+
+                                </Grid>
+
+                                <Grid Grid.Row="5" Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60*" />
+                                        <ColumnDefinition Width="10*" />
+                                        <ColumnDefinition Width="30*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" >
+                                        <Button x:Name="_btnCreateTables" 
+                                                Content="Create Tables"
+                                                Command="{Binding CreateTablesCommand}">
+                                        </Button>
                                     </Grid>
 
                                 </Grid>

@@ -42,6 +42,22 @@ namespace CNC_Program_Control_System
                 }
             }
         }
+        public string IsValidDBConnectionString()
+        {
+            using (BaseDBContext ctx = new BaseDBContext())
+            {
+                ctx.DatabaseCredential = DatabaseConnectionModel;
+                try
+                {
+                    ctx.Database.BeginTransaction();
+                    return ctx.Database.GetConnectionString();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         public string GetValidDBConnection()
         {
@@ -50,12 +66,13 @@ namespace CNC_Program_Control_System
                 //ctx.DatabaseCredential = DatabaseConnectionModel;
                 try
                 {
-                    ctx.Database.BeginTransaction();
+                    //ctx.Database.SetCommandTimeout(0);
+                    //ctx.Database.BeginTransaction();
                     return ctx.Database.GetConnectionString();
                 }
                 catch (Exception ex)
                 {
-                    return "";
+                    return null;
                 }
             }
         }

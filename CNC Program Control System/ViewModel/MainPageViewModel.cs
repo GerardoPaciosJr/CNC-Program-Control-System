@@ -2,6 +2,7 @@
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -62,6 +63,7 @@ namespace CNC_Program_Control_System
         #region Public Properties - Delegate Commands
         public DelegateCommand<object> TestConnectionCommand { get; set; }
         public DelegateCommand<object> CreateDBCommand { get; set; }
+        public DelegateCommand<object> CreateTablesCommand { get; set; }
         #endregion
 
         #region Private Properties - Common
@@ -91,7 +93,6 @@ namespace CNC_Program_Control_System
         public IAuthenticationService AuthenticationService { get; set; }
 
         #region Constructor
-        //public MainPageViewModel(IAppDetachedService appDetachedServices, IBaseDBContext baseDBContext, IUserServices userServices)
         public MainPageViewModel(IBaseDBContext baseDBContext, IAuthenticationService authenticationService)
         {
             InitCommands();
@@ -118,6 +119,12 @@ namespace CNC_Program_Control_System
 
             await Task.Delay(0);
         }
+        public async Task CreateTablesAsync(object param)
+        {
+            CreateTables(param);
+
+            await Task.Delay(0);
+        }
         #endregion
 
         #region Private Methods - Common
@@ -125,6 +132,7 @@ namespace CNC_Program_Control_System
         {
             TestConnectionCommand = new DelegateCommand<object>(async (param) => await RunCommandAsync(() => IsNotBusy, async () => { await TestConnectionAsync(param); }));
             CreateDBCommand = new DelegateCommand<object>(async (param) => await RunCommandAsync(() => IsNotBusy, async () => { await CreateDBAsync(param); }));
+            CreateTablesCommand = new DelegateCommand<object>(async (param) => await RunCommandAsync(() => IsNotBusy, async () => { await CreateTablesAsync(param); }));
         }
 
         private void GetDatabaseCredential(object param)
@@ -145,7 +153,7 @@ namespace CNC_Program_Control_System
 
             if (IsValidDBConnection)
             {
-                if (isTest) MessageBox.Show("Test Connection", "Test Connection Successful!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                if (isTest) MessageBox.Show("Test Connection", "Test Connection Successful!", MessageBoxButton.OK, MessageBoxImage.Information);
                 return true;
             }
 
@@ -165,6 +173,8 @@ namespace CNC_Program_Control_System
                     connection.Open();
                     string createDatabaseQuery = $"CREATE DATABASE {NewDatabaseName}";
                     SqlCommand command = new SqlCommand(createDatabaseQuery, connection);
+                    command.CommandTimeout = 0;
+
                     command.ExecuteNonQuery();
 
                 // Create User with Admin Permissions
@@ -174,9 +184,11 @@ namespace CNC_Program_Control_System
                                             $"ALTER ROLE db_owner ADD MEMBER {NewDBUsername};";
 
                 SqlCommand createUserCommand = new SqlCommand(createUserQuery, connection);
-                createUserCommand.ExecuteNonQuery();
+                    createUserCommand.CommandTimeout = 60;
+                    createUserCommand.ExecuteNonQuery();
 
-                MessageBox.Show("Database Creation", "Database Creation Complete!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Database Creation", "Database Creation Complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    UpdateDBConnectionSetting();
                 }
                 
             }
@@ -184,6 +196,49 @@ namespace CNC_Program_Control_System
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void CreateTables(object param)
+        {
+            try
+            {
+
+                string sqlFilePath = Directory.GetCurrentDirectory() + "\\tables.sql";
+                if (!File.Exists(sqlFilePath))
+                {
+                    MessageBox.Show("SQL file not found.");
+                    return;
+                }
+
+                GetDatabaseCredential(param);
+                
+                string sqlScript = File.ReadAllText(sqlFilePath);
+                //string connectionString = _BaseDBContext.ConnectionString;
+                using (SqlConnection connection = new SqlConnection(AuthenticationService.IsValidDBConnectionString()))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlScript, connection);
+                    command.CommandTimeout = 60;
+                    command.ExecuteNonQuery();
+
+                    MessageBox.Show("Table Creation", "Table Creation Complete!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                
+
+                    
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void UpdateDBConnectionSetting()
+        {
+            DatabaseName = NewDBPassword;
+            DBUsername = NewDBUsername;
+            DBPassword = NewDBPassword;
         }
 
             #endregion
