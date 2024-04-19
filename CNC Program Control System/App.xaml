@@ -9,6 +9,10 @@
                 <ResourceDictionary>
                     <local:ViewModelLocator x:Key="VWMLocator" />
                 </ResourceDictionary>
+
+                <ResourceDictionary Source="/Styles/Color.xaml"/>
+                <ResourceDictionary Source="/Styles/Button.xaml"/>
+                <ResourceDictionary Source="/Styles/InputTextFields.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -186,49 +186,8 @@ namespace CNC_Program_Control_System
             await ConfigService.CreateNewDBTablesAsync(databaseModel);
         }
 
-        private void CreateTables(object param)
-        {
-            try
-            {
+        
+         #endregion
 
-                //string sqlFilePath = Directory.GetCurrentDirectory() + "\\tables.sql";
-                //if (!File.Exists(sqlFilePath))
-                //{
-                //    MessageBox.Show("SQL file not found.");
-                //    return;
-                //}
-
-                //GetDatabaseCredential(param);
-                
-                //string sqlScript = File.ReadAllText(sqlFilePath);
-                //using (SqlConnection connection = new SqlConnection(AuthenticationService.IsValidDBConnectionString()))
-                //{
-                //    connection.Open();
-                //    SqlCommand command = new SqlCommand(sqlScript, connection);
-                //    command.CommandTimeout = 0;
-                //    command.ExecuteNonQuery();
-
-                //    MessageBox.Show("Table Creation", "Table Creation Complete!", MessageBoxButton.OK, MessageBoxImage.Information);
-                //}
-                
-
-                    
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void UpdateDBConnectionSetting()
-        {
-            DatabaseName = NewDBPassword;
-            DBUsername = NewDBUsername;
-            DBPassword = NewDBPassword;
-        }
-
-            #endregion
-
-        }
+    }
 }
