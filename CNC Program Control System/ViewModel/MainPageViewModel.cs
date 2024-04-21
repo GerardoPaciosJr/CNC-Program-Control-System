@@ -89,6 +89,7 @@ namespace CNC_Program_Control_System
         #region Private Properties - Interface
         //private readonly IAppDetachedService _AppDetachedServices;
         private readonly IBaseDBContext _BaseDBContext;
+        private FluentValidation.Results.ValidationResult Result = new FluentValidation.Results.ValidationResult();
         #endregion
         public IAuthenticationService AuthenticationService { get; set; }
         public IConfigService ConfigService { get; set; }
@@ -149,7 +150,13 @@ namespace CNC_Program_Control_System
 
         public bool TestConnection(object param, bool isTest)
         {
+
             GetDatabaseCredential(param);
+
+            //AttachConfigValidators();
+            //Result = DatabaseCredential.Validator.Validate(DatabaseCredential);
+            //if (!Result.IsValid) { return false; }
+
             bool IsValidDBConnection =  AuthenticationService.IsValidDBConnection();
 
             if (IsValidDBConnection)
@@ -171,6 +178,11 @@ namespace CNC_Program_Control_System
                 DatabaseUser = NewDBUsername, 
                 DatabasePassword = NewDBPassword
             };
+
+            if (ConfigService.CheckNewDBExist(databaseModel)) {
+                MessageBox.Show("Create Database", "Database Already Exist", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
             await ConfigService.CreateNewDBAsync(databaseModel);
         }
 
@@ -186,8 +198,11 @@ namespace CNC_Program_Control_System
             await ConfigService.CreateNewDBTablesAsync(databaseModel);
         }
 
-        
-         #endregion
+        private void AttachConfigValidators()
+        {
+            if (DatabaseCredential.Validator == null) DatabaseCredential.AttachValidator(new DatabaseCredentialValidator());
+        }
+        #endregion
 
     }
 }

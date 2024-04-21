@@ -2,12 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
-        <Setter Property="FontFamily" Value="{StaticResource FontFamilyPrimaryTitle}"/>
-        <Setter Property="Foreground" Value="{StaticResource ControlForeground}"/>
+        <Setter Property="Foreground" Value="{StaticResource DefaultFontSolidColorBrush}"/>
         <Setter Property="Background" Value="{StaticResource PrimaryButtonBackgroundSolidColorBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource PrimaryButtonBackgroundSolidColorBrush}"/>
-        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Padding" Value="8"/>
         <Setter Property="Border.CornerRadius" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -39,5 +37,7 @@
             </EventTrigger>
         </Style.Triggers>
     </Style>
+
+    <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle}" />
 
 </ResourceDictionary>

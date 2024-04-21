@@ -123,6 +123,10 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
+            <!-- Invalid -->
+            <!--<Trigger Property="Validation.HasError" Value="True">
+                <Setter TargetName="FocusVisual" Property="Visibility" Value="Collapsed"/>
+            </Trigger>-->
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -144,6 +148,7 @@
         <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource ValidationTooltipTemplate}"/>
         <Setter Property="BorderBrush">
             <Setter.Value>
                 <SolidColorBrush Color="{StaticResource ControlBorder}"/>

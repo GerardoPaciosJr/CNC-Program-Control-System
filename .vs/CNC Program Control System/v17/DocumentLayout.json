@@ -1,0 +1,403 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\viewmodel\\mainpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\viewmodel\\mainpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\viewmodel\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\viewmodel\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\infrastructure\\repository\\configrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\infrastructure\\repository\\configrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\infrastructure\\service\\configservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\infrastructure\\service\\configservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\infrastructure\\service\\iconfigservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\infrastructure\\service\\iconfigservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\infrastructure\\repository\\iconfigrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\infrastructure\\repository\\iconfigrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jhe Pacios\\AppData\\Local\\Temp\\.vsdbgsrc\\79af52176639c5284dddaaa3052cf59d36ff5644fb998b01e73e55f38e873233\\DependencyObject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\styles\\general.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\styles\\general.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jhe Pacios\\AppData\\Local\\Temp\\.vsdbgsrc\\07562dd9ba86a0a5fead5117dd68e3c724f52eea01f79d4441c442c042cad972\\XamlReader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\styles\\inputtextfields.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\styles\\inputtextfields.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\infrastructure\\basedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\infrastructure\\basedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\infrastructure\\service\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\infrastructure\\service\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\styles\\color.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\styles\\color.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\styles\\button.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\styles\\button.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\infrastructure\\dependencyinjection\\simpleinjectorbootstrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\infrastructure\\dependencyinjection\\simpleinjectorbootstrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\infrastructure\\ibasedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\infrastructure\\ibasedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\infrastructure\\repository\\baserepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\infrastructure\\repository\\baserepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\infrastructure\\dependencyinjection\\commonbootstrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\infrastructure\\dependencyinjection\\commonbootstrapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|c:\\users\\jhe pacios\\source\\repos\\cnc program control system\\cnc program control system\\infrastructure\\dependencyinjection\\bootstrappermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{787B54ED-A4BA-4D9E-87A5-C044E5A93050}|CNC Program Control System\\CNC Program Control System.csproj|solutionrelative:cnc program control system\\infrastructure\\dependencyinjection\\bootstrappermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainPageViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\ViewModel\\MainPageViewModel.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\ViewModel\\MainPageViewModel.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\ViewModel\\MainPageViewModel.cs",
+              "RelativeToolTip": "CNC Program Control System\\ViewModel\\MainPageViewModel.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAawLkAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T16:37:38.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DependencyObject.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\AppData\\Local\\Temp\\.vsdbgsrc\\79af52176639c5284dddaaa3052cf59d36ff5644fb998b01e73e55f38e873233\\DependencyObject.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\79af52176639c5284dddaaa3052cf59d36ff5644fb998b01e73e55f38e873233\\DependencyObject.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\AppData\\Local\\Temp\\.vsdbgsrc\\79af52176639c5284dddaaa3052cf59d36ff5644fb998b01e73e55f38e873233\\DependencyObject.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\79af52176639c5284dddaaa3052cf59d36ff5644fb998b01e73e55f38e873233\\DependencyObject.cs [Read Only]",
+              "ViewState": "AQIAAPsBAAAAAAAAAAArwBECAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T08:21:50.649Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IConfigRepo.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Repository\\IConfigRepo.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Infrastructure\\Repository\\IConfigRepo.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Repository\\IConfigRepo.cs",
+              "RelativeToolTip": "CNC Program Control System\\Infrastructure\\Repository\\IConfigRepo.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T19:08:54.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConfigService.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Service\\ConfigService.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Infrastructure\\Service\\ConfigService.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Service\\ConfigService.cs",
+              "RelativeToolTip": "CNC Program Control System\\Infrastructure\\Service\\ConfigService.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T21:07:14.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IConfigService.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Service\\IConfigService.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Infrastructure\\Service\\IConfigService.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Service\\IConfigService.cs",
+              "RelativeToolTip": "CNC Program Control System\\Infrastructure\\Service\\IConfigService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T21:07:58.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BaseViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\ViewModel\\BaseViewModel.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\ViewModel\\BaseViewModel.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\ViewModel\\BaseViewModel.cs",
+              "RelativeToolTip": "CNC Program Control System\\ViewModel\\BaseViewModel.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAArwEEAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T18:06:26.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "CNC Program Control System\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\MainWindow.xaml",
+              "RelativeToolTip": "CNC Program Control System\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-17T13:53:59.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ConfigRepo.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Repository\\ConfigRepo.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Infrastructure\\Repository\\ConfigRepo.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Repository\\ConfigRepo.cs",
+              "RelativeToolTip": "CNC Program Control System\\Infrastructure\\Repository\\ConfigRepo.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAQwBAAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T10:29:40.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "General.xaml",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Styles\\General.xaml",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Styles\\General.xaml",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Styles\\General.xaml",
+              "RelativeToolTip": "CNC Program Control System\\Styles\\General.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-21T09:41:14.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "XamlReader.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\AppData\\Local\\Temp\\.vsdbgsrc\\07562dd9ba86a0a5fead5117dd68e3c724f52eea01f79d4441c442c042cad972\\XamlReader.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\07562dd9ba86a0a5fead5117dd68e3c724f52eea01f79d4441c442c042cad972\\XamlReader.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\AppData\\Local\\Temp\\.vsdbgsrc\\07562dd9ba86a0a5fead5117dd68e3c724f52eea01f79d4441c442c042cad972\\XamlReader.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\07562dd9ba86a0a5fead5117dd68e3c724f52eea01f79d4441c442c042cad972\\XamlReader.cs [Read Only]",
+              "ViewState": "AQIAAH4BAAAAAAAAAAArwIkBAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T08:10:34.859Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\App.xaml",
+              "RelativeDocumentMoniker": "CNC Program Control System\\App.xaml",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\App.xaml",
+              "RelativeToolTip": "CNC Program Control System\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-17T18:28:48.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "InputTextFields.xaml",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Styles\\InputTextFields.xaml",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Styles\\InputTextFields.xaml",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Styles\\InputTextFields.xaml",
+              "RelativeToolTip": "CNC Program Control System\\Styles\\InputTextFields.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-19T09:39:59.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BaseDBContext.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\BaseDBContext.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Infrastructure\\BaseDBContext.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\BaseDBContext.cs",
+              "RelativeToolTip": "CNC Program Control System\\Infrastructure\\BaseDBContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T17:51:02.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\appsettings.json",
+              "RelativeDocumentMoniker": "CNC Program Control System\\appsettings.json",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\appsettings.json",
+              "RelativeToolTip": "CNC Program Control System\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-21T09:20:15.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Service\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Infrastructure\\Service\\AuthenticationService.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Service\\AuthenticationService.cs",
+              "RelativeToolTip": "CNC Program Control System\\Infrastructure\\Service\\AuthenticationService.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAArwA4AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T21:35:27.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Button.xaml",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Styles\\Button.xaml",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Styles\\Button.xaml",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Styles\\Button.xaml",
+              "RelativeToolTip": "CNC Program Control System\\Styles\\Button.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-19T10:02:31.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Color.xaml",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Styles\\Color.xaml",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Styles\\Color.xaml",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Styles\\Color.xaml",
+              "RelativeToolTip": "CNC Program Control System\\Styles\\Color.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-19T10:01:55.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SimpleInjectorBootStrapper.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\DependencyInjection\\SimpleInjectorBootStrapper.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Infrastructure\\DependencyInjection\\SimpleInjectorBootStrapper.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\DependencyInjection\\SimpleInjectorBootStrapper.cs",
+              "RelativeToolTip": "CNC Program Control System\\Infrastructure\\DependencyInjection\\SimpleInjectorBootStrapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T18:46:39.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IBaseDBContext.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\IBaseDBContext.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Infrastructure\\IBaseDBContext.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\IBaseDBContext.cs",
+              "RelativeToolTip": "CNC Program Control System\\Infrastructure\\IBaseDBContext.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T20:46:12.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "BaseRepo.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Repository\\BaseRepo.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Infrastructure\\Repository\\BaseRepo.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\Repository\\BaseRepo.cs",
+              "RelativeToolTip": "CNC Program Control System\\Infrastructure\\Repository\\BaseRepo.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T03:25:47.531Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CommonBootStrapper.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\DependencyInjection\\CommonBootStrapper.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Infrastructure\\DependencyInjection\\CommonBootStrapper.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\DependencyInjection\\CommonBootStrapper.cs",
+              "RelativeToolTip": "CNC Program Control System\\Infrastructure\\DependencyInjection\\CommonBootStrapper.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAYwAUAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T18:46:13.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "BootStrapperManager.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\DependencyInjection\\BootStrapperManager.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\Infrastructure\\DependencyInjection\\BootStrapperManager.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\Infrastructure\\DependencyInjection\\BootStrapperManager.cs",
+              "RelativeToolTip": "CNC Program Control System\\Infrastructure\\DependencyInjection\\BootStrapperManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T18:45:54.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\App.xaml.cs",
+              "RelativeDocumentMoniker": "CNC Program Control System\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\Jhe Pacios\\source\\repos\\CNC Program Control System\\CNC Program Control System\\App.xaml.cs",
+              "RelativeToolTip": "CNC Program Control System\\App.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T18:54:37.409Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,11 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Color x:Key="DefaultPrimaryColor">#3D3D45</Color>
-    <Color x:Key="DefaultPrimaryColorActive">#2F2F35</Color>
-    <Color x:Key="DefaultPrimaryColorHover">#68686E</Color>
-    <Color x:Key="DefaultPrimaryColorDisabled">#D3D3D5</Color>
-    
+    <Color x:Key="DefaultForeground">#fff</Color>
     <Color x:Key="ControlForeground">#181818</Color>
     <Color x:Key="ControlReadOnlyForeground">#383838</Color>
     <Color x:Key="ControlDisabledForeground">#686868</Color>
@@ -18,8 +14,39 @@
 
     <Color x:Key="ControlBorder">#383838</Color>
     <Color x:Key="ControlHoveredBorder">#0BBAE0</Color>
-    <Color x:Key="ControlFocusedBorder">#000000</Color>
+    <Color x:Key="ControlFocusedBorder">#0BBAE0</Color>
     <Color x:Key="ControlReadOnlyBorder">#484848</Color>
     <Color x:Key="ControlDisabledBorder">#787878</Color>
+
+    <Color x:Key="DefaultPrimaryColor">#2c3d50</Color>
+    <Color x:Key="DefaultPrimaryColorActive">#2c3d50</Color>
+    <Color x:Key="DefaultPrimaryColorHover">#375e8a</Color>
+    <Color x:Key="DefaultPrimaryColorDisabled">#D3D3D5</Color>
+
+    <Color x:Key="DefaultSecondaryColor">#3396d9</Color>
+    <Color x:Key="DefaultSecondaryColorActive">#3396d9</Color>
+    <Color x:Key="DefaultSecondaryColorHover">#19bb9b</Color>
+    <Color x:Key="DefaultSecondaryColorDisabled">#FCFCFC</Color>
+
+    <Color x:Key="DefaultTertiaryColor">#f39c13</Color>
+    <Color x:Key="DefaultTertiaryColorActive">#f39c13</Color>
+    <Color x:Key="DefaultTertiaryColorHover">#f39c13</Color>
+    <Color x:Key="DefaultTertiaryColorDisabled">#FDECD6</Color>
+
+    <!--Start - Fonts-->
+    <SolidColorBrush x:Key="DefaultFontSolidColorBrush" Color="{StaticResource DefaultForeground}" />
+    <SolidColorBrush x:Key="PrimaryFontSolidColorBrush" Color="{StaticResource ControlForeground}" />
+    <SolidColorBrush x:Key="SecondaryFontSolidColorBrush" Color="{StaticResource ControlForeground}" />
+    <!--End - Fonts-->
+
+    <!--Start - Buttons-->
+    <SolidColorBrush x:Key="PrimaryButtonBackgroundSolidColorBrush" Color="{StaticResource DefaultPrimaryColor}" />
+    <SolidColorBrush x:Key="PrimaryButtonHoverSolidColorBrush" Color="{StaticResource DefaultPrimaryColorHover}" />
+    <SolidColorBrush x:Key="PrimaryButtonDisabledSolidColorBrush" Color="{StaticResource DefaultPrimaryColorDisabled}" />
+
+    <SolidColorBrush x:Key="SecondaryButtonBackgroundSolidColorBrush" Color="{StaticResource DefaultSecondaryColor}" />
+    <SolidColorBrush x:Key="SecondaryButtonHoverSolidColorBrush" Color="{StaticResource DefaultSecondaryColorHover}" />
+    <SolidColorBrush x:Key="SecondaryButtonDisabledSolidColorBrush" Color="{StaticResource DefaultSecondaryColorDisabled}" />
+    <!--End - Buttons-->
 
 </ResourceDictionary>

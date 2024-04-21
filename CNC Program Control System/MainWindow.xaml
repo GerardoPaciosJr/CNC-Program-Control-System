@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CNC_Program_Control_System"
         DataContext="{Binding MainPageVWM, Source={StaticResource VWMLocator}}"
         mc:Ignorable="d"
-        Height="450" Width="800">
+        Height="500" Width="800">
     
     <Grid x:Name="_Parent">
         <Grid>
@@ -102,7 +102,6 @@
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
@@ -124,8 +123,12 @@
                                         <AdornerDecorator>
                                             <TextBox x:Name="_TextDBHost" 
                                                      HorizontalAlignment="Stretch" 
-                                                     VerticalAlignment="Center"
-                                                     Text="{Binding ServerHostName}">
+                                                     VerticalAlignment="Center">
+                                                <Binding Path="ServerHostName" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
+                                                    <Binding.ValidationRules>
+                                                        <local:EmptyStringValidationRule/>
+                                                    </Binding.ValidationRules>
+                                                </Binding>
                                             </TextBox>
                                         </AdornerDecorator>
                                         <Border ></Border>
@@ -152,6 +155,9 @@
                                                      HorizontalAlignment="Stretch" 
                                                      VerticalAlignment="Center">
                                                 <Binding Path="DatabaseName" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
+                                                    <Binding.ValidationRules>
+                                                        <local:EmptyStringValidationRule/>
+                                                    </Binding.ValidationRules>
                                                 </Binding>
                                             </TextBox>
                                         </AdornerDecorator>
@@ -159,16 +165,7 @@
                                     </Grid>
                                 </Grid>
 
-                                <!-- Separator -->
                                 <Grid Grid.Row="2" Grid.Column="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Separator Opacity="0.5"/>
-                                </Grid>
-
-                                <Grid Grid.Row="3" Grid.Column="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="45*" />
                                         <ColumnDefinition Width="10*" />
@@ -202,6 +199,9 @@
                                                          HorizontalAlignment="Stretch" 
                                                          VerticalAlignment="Center">
                                                     <Binding Path="DBUsername" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
+                                                        <Binding.ValidationRules>
+                                                            <local:EmptyStringValidationRule/>
+                                                        </Binding.ValidationRules>
                                                     </Binding>
                                                 </TextBox>
                                             </AdornerDecorator>
@@ -228,9 +228,25 @@
                                             <AdornerDecorator>
                                                 <TextBox x:Name="_TextDBPassword"
                                                          HorizontalAlignment="Stretch" 
-                                                         VerticalAlignment="Center">
+                                                         VerticalAlignment="Center"
+                                                         FontFamily="pack://application:,,,/Resources/#password">
                                                     <Binding Path="DBPassword" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
+                                                        <Binding.ValidationRules>
+                                                            <local:EmptyStringValidationRule/>
+                                                        </Binding.ValidationRules>
                                                     </Binding>
+                                                    <TextBox.InputBindings>
+                                                        <!--Disable CTRL+C (COPY) -->
+                                                        <KeyBinding Command="ApplicationCommands.NotACommand"
+                                                                    Key="C" Modifiers="Control" />
+                                                        <!--Disable CTRL+X (CUT) -->
+                                                        <KeyBinding Command="ApplicationCommands.NotACommand"
+                                                                    Key="X" Modifiers="Control" />
+                                                    </TextBox.InputBindings>
+                                                    <TextBox.ContextMenu>
+                                                        <!--Hide context menu where you could copy/cut as well -->
+                                                        <ContextMenu Visibility="Collapsed" />
+                                                    </TextBox.ContextMenu>
                                                 </TextBox>
                                             </AdornerDecorator>
                                             <Border></Border>
@@ -238,7 +254,7 @@
                                     </Grid>
                                 </Grid>
 
-                                <Grid Grid.Row="4" Grid.Column="1">
+                                <Grid Grid.Row="3" Grid.Column="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="60*" />
                                         <ColumnDefinition Width="10*" />
@@ -265,7 +281,7 @@
 
                                 </Grid>
 
-                                <Grid Grid.Row="5" Grid.Column="1">
+                                <Grid Grid.Row="4" Grid.Column="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="60*" />
                                         <ColumnDefinition Width="10*" />
@@ -312,7 +328,7 @@
                                 </Grid>
 
                                 <Grid Grid.Column="1" HorizontalAlignment="Left">
-                                    <Label Content="Ne Database Setup" Typography.Capitals="AllSmallCaps"/>
+                                    <Label Content="New Database Setup" Typography.Capitals="AllSmallCaps"/>
                                 </Grid>
                             </Grid>
                             <!--End - Connection String Title -->
@@ -331,7 +347,6 @@
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
@@ -346,31 +361,26 @@
                                     </Grid.RowDefinitions>
 
                                     <Grid Grid.Row="0" HorizontalAlignment="Left">
-                                        <Label Content="New Database Name" Typography.Capitals="Normal" />
+                                        <Label Content="Database Name" Typography.Capitals="Normal" />
                                     </Grid>
 
                                     <Grid Grid.Row="1" HorizontalAlignment="Stretch" >
                                         <AdornerDecorator>
                                             <TextBox x:Name="_TextNewDBName" 
                                                      HorizontalAlignment="Stretch" 
-                                                     VerticalAlignment="Center"
-                                                     Text="{Binding NewDatabaseName}">
+                                                     VerticalAlignment="Center">
+                                                <Binding Path="NewDatabaseName" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
+                                                    <Binding.ValidationRules>
+                                                        <local:EmptyStringValidationRule/>
+                                                    </Binding.ValidationRules>
+                                                </Binding>
                                             </TextBox>
                                         </AdornerDecorator>
                                         <Border ></Border>
                                     </Grid>
                                 </Grid>
 
-                                <!-- Separator -->
                                 <Grid Grid.Row="1" Grid.Column="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Separator Opacity="0.5"/>
-                                </Grid>
-
-                                <Grid Grid.Row="2" Grid.Column="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="45*" />
                                         <ColumnDefinition Width="10*" />
@@ -395,15 +405,19 @@
                                         </Grid.RowDefinitions>
 
                                         <Grid Grid.Row="0" HorizontalAlignment="Left">
-                                            <Label Content="New DB User" Typography.Capitals="Normal" />
+                                            <Label Content="Database User" Typography.Capitals="Normal" />
                                         </Grid>
 
                                         <Grid Grid.Row="1" HorizontalAlignment="Stretch" >
                                             <AdornerDecorator>
                                                 <TextBox x:Name="_TextNewDBUsername" 
                                                          HorizontalAlignment="Stretch" 
-                                                         VerticalAlignment="Center"
-                                                         Text="{Binding NewDBUsername}">
+                                                         VerticalAlignment="Center">
+                                                    <Binding Path="NewDBUsername" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
+                                                        <Binding.ValidationRules>
+                                                            <local:EmptyStringValidationRule/>
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
                                                 </TextBox>
                                             </AdornerDecorator>
                                             <Border></Border>
@@ -430,7 +444,25 @@
                                                 <TextBox x:Name="_TextNewDBPassword"
                                                          HorizontalAlignment="Stretch" 
                                                          VerticalAlignment="Center"
-                                                         Text="{Binding NewDBPassword}">
+                                                         FontFamily="pack://application:,,,/Resources/#password">
+                                                    <Binding Path="NewDBPassword" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
+                                                        <Binding.ValidationRules>
+                                                            <local:EmptyStringValidationRule/>
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+
+                                                    <TextBox.InputBindings>
+                                                        <!--Disable CTRL+C (COPY) -->
+                                                        <KeyBinding Command="ApplicationCommands.NotACommand"
+                                                                    Key="C" Modifiers="Control" />
+                                                        <!--Disable CTRL+X (CUT) -->
+                                                        <KeyBinding Command="ApplicationCommands.NotACommand"
+                                                                    Key="X" Modifiers="Control" />
+                                                    </TextBox.InputBindings>
+                                                    <TextBox.ContextMenu>
+                                                        <!--Hide context menu where you could copy/cut as well -->
+                                                        <ContextMenu Visibility="Collapsed" />
+                                                    </TextBox.ContextMenu>
                                                 </TextBox>
                                             </AdornerDecorator>
                                             <Border></Border>
@@ -438,7 +470,7 @@
                                     </Grid>
                                 </Grid>
 
-                                <Grid Grid.Row="3" Grid.Column="1">
+                                <Grid Grid.Row="2" Grid.Column="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="60*" />
                                         <ColumnDefinition Width="10*" />

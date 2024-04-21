@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -13,6 +14,22 @@ namespace CNC_Program_Control_System
         private readonly IBaseDBContext _IBaseDBContext;
         public ConfigRepo(IBaseDBContext context) : base(context) {
             _IBaseDBContext = context;
+        }
+
+        public bool CheckIsDatabaseExist(NewDatabaseModel db)
+        {
+            using (BaseDBContext ctx = new BaseDBContext())
+            {
+                using (SqlConnection connection = new SqlConnection(ctx.Database.GetConnectionString()))
+                {
+                    connection.Open();
+                    string query = "select count(*) from master.dbo.sysdatabases where name=@database";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.Add("@database", System.Data.SqlDbType.NVarChar).Value = db.DatabaseName;
+                    command.ExecuteNonQuery();
+                    return Convert.ToInt32(command.ExecuteScalar()) == 1;
+                }
+            }
         }
 
         public async Task CreateDatabase(NewDatabaseModel db)

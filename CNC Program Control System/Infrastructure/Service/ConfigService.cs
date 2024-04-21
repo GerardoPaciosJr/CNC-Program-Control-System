@@ -15,6 +15,10 @@ namespace CNC_Program_Control_System
             _configRepo = configRepo;
         }
 
+        public bool CheckNewDBExist(NewDatabaseModel db)
+        {
+            return _configRepo.CheckIsDatabaseExist(db);
+        }
         public async Task CreateNewDBAsync(NewDatabaseModel db)
         {
             await _configRepo.CreateDatabase(db);
