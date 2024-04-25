@@ -18,7 +18,8 @@ namespace CNC_Program_Control_System
             get
             {
                 if (Validator == null) return false;
-                var hasErrors = Validator.Validate((IValidationContext)this).Errors.Any();
+                var context = new ValidationContext<object>(this);
+                var hasErrors = Validator.Validate(context).Errors.Any();
                 return hasErrors;
             }
         }
@@ -32,7 +33,8 @@ namespace CNC_Program_Control_System
         public IEnumerable GetErrors([CallerMemberName] string propertyName = null)
         {
             if (Validator == null) return Enumerable.Empty<object>();
-            var errors = Validator.Validate((IValidationContext)this).Errors.Where(c => c.PropertyName == propertyName);
+            var context = new ValidationContext<object>(this);
+            var errors = Validator.Validate(context).Errors.Where(c => c.PropertyName == propertyName);
 
             return errors;
         }

@@ -88,3 +88,4 @@ C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control 
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC_Program_Control_System.Properties.Resources.resources
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System.csproj.GenerateResource.cache
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\Styles\General.baml
+C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\Newtonsoft.Json.dll

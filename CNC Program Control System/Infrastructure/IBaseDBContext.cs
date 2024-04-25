@@ -17,6 +17,10 @@ namespace CNC_Program_Control_System
 
         int SaveChanges();
         string ConnectionString { get; set; }
-      
+        void SaveConnection();
+        string DefaultConnectionString();
+
+
+
     }
 }

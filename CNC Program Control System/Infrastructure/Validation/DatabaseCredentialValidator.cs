@@ -15,7 +15,7 @@ namespace CNC_Program_Control_System
                 .NotEmpty()
                 .WithMessage("Please input Database Name.");
 
-            RuleFor(credential => credential.UserID)
+            RuleFor(credential => credential.DatabaseUser)
                 .NotEmpty()
                 .WithMessage("Please input User Name.");
 

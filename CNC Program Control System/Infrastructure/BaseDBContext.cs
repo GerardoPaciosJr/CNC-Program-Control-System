@@ -2,10 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration.Json;
+using System.Xml;
+using Newtonsoft.Json;
+using Microsoft.Extensions.Options;
 
 namespace CNC_Program_Control_System
 {
@@ -19,28 +24,27 @@ namespace CNC_Program_Control_System
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-            if (DatabaseCredential == null)
-            {
-                var builder = new ConfigurationBuilder()
+            var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
-                Configuration = builder.Build();
-                ConnectionString = Configuration.GetConnectionString("dbsetting");
-            }
-            else
+            Configuration = builder.Build();
+            ConnectionString = Configuration.GetConnectionString("dbsetting");
+
+            if (DatabaseCredential != null)
             {
                 ConnectionString = (@"server=" + DatabaseCredential.ServerHostName +
                                     ";database=" + DatabaseCredential.DatabaseName +
-                                    ";uid=" + DatabaseCredential.UserID +
+                                    ";uid=" + DatabaseCredential.DatabaseUser +
                                     ";password=" + DatabaseCredential.DatabasePassword +
                                     ";TrustServerCertificate=True");
+
             }
 
             optionsBuilder.UseSqlServer(ConnectionString);
             optionsBuilder.EnableSensitiveDataLogging(true);
 
+            SaveConnection();
             base.OnConfiguring(optionsBuilder);
         }
 
@@ -59,6 +63,27 @@ namespace CNC_Program_Control_System
         public Task BulkSave<T>(IEnumerable<T> entities) where T : class, new()
         {
             throw new System.NotImplementedException();
+        }
+
+        public void SaveConnection()
+        {
+            //Configuration.GetSection("ConnectionStrings:dbsetting").Value = "Server=;database=;uid=;password=;TrustServerCertificate=True;";
+            string pth = @"C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\appsettings.json"; 
+            var json = File.ReadAllText(pth);
+            dynamic jsonObj = JsonConvert.DeserializeObject(json);
+            jsonObj["ConnectionStrings"]["dbsetting"] = ConnectionString;
+            string output = JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
+            File.WriteAllText(pth, output);
+        }
+
+        public string DefaultConnectionString()
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+            Configuration = builder.Build();
+            return Configuration.GetConnectionString("defaultsetting");
         }
     }
 }

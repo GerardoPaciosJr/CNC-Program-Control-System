@@ -2,6 +2,7 @@
 using Prism.Events;
 using SimpleInjector;
 using System;
+using Microsoft.Extensions.Configuration.Json;
 
 namespace CNC_Program_Control_System
 {

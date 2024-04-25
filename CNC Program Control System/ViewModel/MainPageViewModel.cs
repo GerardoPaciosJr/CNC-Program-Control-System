@@ -6,6 +6,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace CNC_Program_Control_System
 {
@@ -61,6 +62,7 @@ namespace CNC_Program_Control_System
         #endregion
 
         #region Public Properties - Delegate Commands
+        public DelegateCommand PageLoadedCommand { get; set; }
         public DelegateCommand<object> TestConnectionCommand { get; set; }
         public DelegateCommand<object> CreateDBCommand { get; set; }
         public DelegateCommand<object> CreateTablesCommand { get; set; }
@@ -97,29 +99,45 @@ namespace CNC_Program_Control_System
         #region Constructor
         public MainPageViewModel(IBaseDBContext baseDBContext, IAuthenticationService authenticationService, IConfigService configService)
         {
-            InitCommands();
-
-            //_AppDetachedServices = appDetachedServices;
-            //_AppDetachedServices.Init();
 
             _BaseDBContext = baseDBContext;
             AuthenticationService = authenticationService;
             ConfigService = configService;
 
+            DatabaseCredential = new DatabaseCredentialModel();
+
+            InitCommands();
+
+            Application.Current.Dispatcher.BeginInvoke(
+            DispatcherPriority.ApplicationIdle,
+            new Action(() =>
+            {
+                PageLoadedCommand.Execute();
+                return;
+            }));
         }
         #endregion
 
         #region Public Methods - Async
-        
+
+        private async Task LoadedAsync()
+        {
+            TestConnection(false);
+            await Task.Delay(0);
+        }
         public async Task TestConnectionAsync(object param)
         {
-            TestConnection(param, true);
-            await Task.Delay(0);
+            if(!TestConnection(true))
+            {
+                await CreateDatabase();
+                await CreateTables();
+            }
+            //await Task.Delay(0);
         }
         public async Task CreateDBAsync(object param)
         {
             await CreateDatabase();
-            MessageBox.Show("Create Database", "Database Created!", MessageBoxButton.OK, MessageBoxImage.Information);
+            //MessageBox.Show("Create Database", "Database Created!", MessageBoxButton.OK, MessageBoxImage.Information);
             //await Task.Delay(0);
         }
         public async Task CreateTablesAsync(object param)
@@ -135,37 +153,33 @@ namespace CNC_Program_Control_System
             TestConnectionCommand = new DelegateCommand<object>(async (param) => await RunCommandAsync(() => IsNotBusy, async () => { await TestConnectionAsync(param); }));
             CreateDBCommand = new DelegateCommand<object>(async (param) => await RunCommandAsync(() => IsNotBusy, async () => { await CreateDBAsync(param); }));
             CreateTablesCommand = new DelegateCommand<object>(async (param) => await RunCommandAsync(() => IsNotBusy, async () => { await CreateTablesAsync(param); }));
+            PageLoadedCommand = new DelegateCommand(async () => await LoadedAsync());
         }
 
-        private void GetDatabaseCredential(object param)
+        private void GetDatabaseCredential()
         {
-            AuthenticationService.CreateSQLConnectionModel(new DatabaseCredentialModel
-            {
-                DatabaseName = DatabaseName,
-                DatabasePassword = DBPassword, // ((MainWindow)param)._TextDBPassword.Text.ToString(),
-                ServerHostName = ServerHostName,
-                UserID = DBUsername,
-            });
+            AuthenticationService.CreateSQLConnectionOnModel(DatabaseCredential);
         }
 
-        public bool TestConnection(object param, bool isTest)
+        public bool TestConnection(bool isTest)
         {
 
-            GetDatabaseCredential(param);
+            GetDatabaseCredential();
 
             //AttachConfigValidators();
             //Result = DatabaseCredential.Validator.Validate(DatabaseCredential);
             //if (!Result.IsValid) { return false; }
 
-            bool IsValidDBConnection =  AuthenticationService.IsValidDBConnection();
+            bool IsValidDBConnection =  AuthenticationService.IsValidDBConnection(isTest);
+            DatabaseCredential = AuthenticationService.DatabaseConnectionModel;
 
             if (IsValidDBConnection)
             {
-                if (isTest) MessageBox.Show("Test Connection", "Test Connection Successful!", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (isTest) MessageBox.Show("Test Connection Successful!", "Test Connection", MessageBoxButton.OK, MessageBoxImage.Information);
                 return true;
             }
 
-            MessageBox.Show("Test Connection", "Unable to connect to server.", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //if (isTest) MessageBox.Show("Unable to connect to server.", "Test Connection", MessageBoxButton.OK, MessageBoxImage.Warning);
             return false;
 
         }
@@ -174,28 +188,25 @@ namespace CNC_Program_Control_System
         {
             NewDatabaseModel databaseModel = new NewDatabaseModel
             {
-                DatabaseName = NewDatabaseName,
-                DatabaseUser = NewDBUsername, 
-                DatabasePassword = NewDBPassword
+                DatabaseName = DatabaseCredential.DatabaseName,
+                DatabaseUser = DatabaseCredential.DatabaseUser, 
+                DatabasePassword = DatabaseCredential.DatabasePassword
             };
 
             if (ConfigService.CheckNewDBExist(databaseModel)) {
-                MessageBox.Show("Create Database", "Database Already Exist", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Database Already Exist", "Create Database", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
             await ConfigService.CreateNewDBAsync(databaseModel);
+            //await ConfigService.CreateNewDBTablesAsync(DatabaseCredential);
+
+            //MessageBox.Show("Database and Tables has been Created!", "Create Database", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private async Task CreateTables()
         {
-            DatabaseCredentialModel databaseModel = new DatabaseCredentialModel
-            {
-                ServerHostName = ServerHostName,
-                DatabaseName = DatabaseName,
-                UserID = DBUsername,
-                DatabasePassword = DBPassword
-            };
-            await ConfigService.CreateNewDBTablesAsync(databaseModel);
+            await ConfigService.CreateNewDBTablesAsync(DatabaseCredential);
+            MessageBox.Show("Database and Tables has been Created!", "Create Database", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void AttachConfigValidators()

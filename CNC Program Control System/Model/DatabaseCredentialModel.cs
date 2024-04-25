@@ -8,7 +8,7 @@ namespace CNC_Program_Control_System
 
         public string DatabaseName { get; set; }
 
-        public string UserID { get; set; }
+        public string DatabaseUser { get; set; }
 
         public string DatabasePassword { get; set; }
         //public SecureString DatabasePassword { get; set; }

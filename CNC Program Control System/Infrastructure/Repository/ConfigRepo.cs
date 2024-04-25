@@ -16,7 +16,7 @@ namespace CNC_Program_Control_System
             _IBaseDBContext = context;
         }
 
-        public bool CheckIsDatabaseExist(NewDatabaseModel db)
+        public bool GetDatabaseConnection(NewDatabaseModel db)
         {
             using (BaseDBContext ctx = new BaseDBContext())
             {
@@ -32,13 +32,29 @@ namespace CNC_Program_Control_System
             }
         }
 
+        public bool CheckIsDatabaseExist(NewDatabaseModel db)
+        {
+            using (BaseDBContext ctx = new BaseDBContext())
+            {
+                using (SqlConnection conn = new SqlConnection(ctx.DefaultConnectionString().ToString()))
+                {
+                    conn.Open();
+                    string query = "select count(*) from master.dbo.sysdatabases where name=@database";
+                    SqlCommand command = new SqlCommand(query, conn);
+                    command.Parameters.Add("@database", System.Data.SqlDbType.NVarChar).Value = db.DatabaseName;
+                    command.ExecuteNonQuery();
+                    return Convert.ToInt32(command.ExecuteScalar()) == 1;
+                }
+            }
+        }
+
         public async Task CreateDatabase(NewDatabaseModel db)
         {
             using (BaseDBContext ctx = new BaseDBContext())
             {
-                using (SqlConnection connection = new SqlConnection(ctx.Database.GetConnectionString()))
+                using (SqlConnection connection = new SqlConnection(ctx.DefaultConnectionString().ToString()))
                 {
-                    await connection.OpenAsync();
+                    connection.Open();
                     string createDatabaseQuery = $"CREATE DATABASE {db.DatabaseName}";
                     SqlCommand command = new SqlCommand(createDatabaseQuery, connection);
                     command.ExecuteNonQuery();
@@ -69,6 +85,7 @@ namespace CNC_Program_Control_System
             using (BaseDBContext ctx = new BaseDBContext())
             {
                 ctx.DatabaseCredential = db;
+                ctx.Database.BeginTransaction();
                 await ctx.Database.ExecuteSqlAsync(FormattableStringFactory.Create(sqlScript));
 
             }

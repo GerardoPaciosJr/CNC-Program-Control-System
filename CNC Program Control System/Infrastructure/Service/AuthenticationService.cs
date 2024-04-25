@@ -1,20 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore;
+//using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.ObjectModel;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
+using System.Configuration;
 
 namespace CNC_Program_Control_System
 {
     public class AuthenticationService : IAuthenticationService
     {
         public DatabaseCredentialModel DatabaseConnectionModel { get; set; }
-        public bool IsValidDBConnection()
+
+        public bool IsValidDBConnection(bool isTest)
         {
             using (BaseDBContext ctx = new BaseDBContext())
             {
-                ctx.DatabaseCredential = DatabaseConnectionModel;
+                if (isTest) ctx.DatabaseCredential = DatabaseConnectionModel;
                 try
                 {
                     ctx.Database.BeginTransaction();
@@ -24,24 +27,13 @@ namespace CNC_Program_Control_System
                 {
                     return false;
                 }
+                finally
+                {
+                    GetSQLConnectionOnModel(ctx.Database.GetConnectionString());
+                }
             }
         }
-        //public bool IsValidDBConnection(DatabaseCredentialModel databaseCredentialModel)
-        //{
-        //    using (BaseDBContext ctx = new BaseDBContext())
-        //    {
-        //        //ctx.DatabaseCredential = DatabaseConnectionModel;// databaseCredentialModel;
-        //        try
-        //        {
-        //            ctx.Database.BeginTransaction();
-        //            return true;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //}
+
         public string IsValidDBConnectionString()
         {
             using (BaseDBContext ctx = new BaseDBContext())
@@ -59,24 +51,7 @@ namespace CNC_Program_Control_System
             }
         }
 
-        //public string GetValidDBConnection()
-        //{
-        //    using (BaseDBContext ctx = new BaseDBContext())
-        //    {
-        //        //ctx.DatabaseCredential = DatabaseConnectionModel;
-        //        try
-        //        {
-        //            //ctx.Database.SetCommandTimeout(0);
-        //            //ctx.Database.BeginTransaction();
-        //            return ctx.GetConnectionString(); ctx.Database.GetDbConnection().ConnectionString;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //}
-        public void CreateSQLConnectionModel(DatabaseCredentialModel model)
+        public void CreateSQLConnectionOnModel(DatabaseCredentialModel model)
         {
 
             var _object = new DatabaseCredentialModel
@@ -84,7 +59,24 @@ namespace CNC_Program_Control_System
                 DatabaseName = model.DatabaseName,
                 DatabasePassword = model.DatabasePassword,
                 ServerHostName = model.ServerHostName,
-                UserID = model.UserID
+                DatabaseUser = model.DatabaseUser
+            };
+
+            DatabaseConnectionModel = _object;
+        }
+
+        public void GetSQLConnectionOnModel(string conn)
+        {
+
+            var builder = new System.Data.Common.DbConnectionStringBuilder();
+            builder.ConnectionString = conn;
+
+            var _object = new DatabaseCredentialModel
+            {
+                DatabaseName =  (builder.TryGetValue("database", out var db))? db.ToString():"", // ?"": builder["database"].ToString(),
+                DatabasePassword = (builder.TryGetValue("password", out var ps)) ? ps.ToString() : "", //string.IsNullOrEmpty(builder["password"].ToString())?"": builder["password"].ToString(),
+                ServerHostName = (builder.TryGetValue("Server", out var sr)) ? sr.ToString() : "", //string.IsNullOrEmpty(builder["Server"].ToString())?"": builder["Server"].ToString(),
+                DatabaseUser = (builder.TryGetValue("uid", out var ui)) ? ui.ToString() : "" //string.IsNullOrEmpty(builder["uid"].ToString())?"": builder["uid"].ToString()
             };
 
             DatabaseConnectionModel = _object;

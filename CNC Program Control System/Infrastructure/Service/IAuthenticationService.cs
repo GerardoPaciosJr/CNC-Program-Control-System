@@ -1,13 +1,13 @@
-﻿namespace CNC_Program_Control_System
+﻿using Microsoft.Extensions.Configuration;
+
+namespace CNC_Program_Control_System
 {
     public interface IAuthenticationService
     {
         DatabaseCredentialModel DatabaseConnectionModel { get; set; }
-        bool IsValidDBConnection();
-        //bool IsValidDBConnection(DatabaseCredentialModel databaseCredentialModel);
+        bool IsValidDBConnection(bool isTest);
         string IsValidDBConnectionString();
-        //string GetValidDBConnection();
-
-        void CreateSQLConnectionModel(DatabaseCredentialModel model);
+        void CreateSQLConnectionOnModel(DatabaseCredentialModel model);
+        void GetSQLConnectionOnModel(string conn);
     }
 }
