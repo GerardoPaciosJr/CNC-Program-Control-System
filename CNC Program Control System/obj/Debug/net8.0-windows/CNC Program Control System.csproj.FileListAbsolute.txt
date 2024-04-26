@@ -1,6 +1,6 @@
-C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\CNC Program Control System.exe
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\appsettings.json
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\tables.sql
+C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\CNC Program Control System.exe
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\CNC Program Control System.deps.json
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\CNC Program Control System.runtimeconfig.json
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\CNC Program Control System.dll
@@ -43,6 +43,7 @@ C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control 
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Core.dll
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.WinForms.dll
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\Prism.dll
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\SimpleInjector.dll
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\System.IdentityModel.Tokens.Jwt.dll
@@ -64,8 +65,10 @@ C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control 
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System.csproj.AssemblyReference.cache
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\Styles\Button.baml
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\Styles\Color.baml
+C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\Styles\General.baml
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\Styles\InputTextFields.baml
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\View\MainPage.g.cs
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System_Content.g.cs
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
@@ -73,7 +76,10 @@ C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control 
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System_MarkupCompile.lref
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\App.baml
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\View\MainPage.baml
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System.g.resources
+C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC_Program_Control_System.Properties.Resources.resources
+C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System.csproj.GenerateResource.cache
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System.AssemblyInfoInputs.cache
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System.AssemblyInfo.cs
@@ -85,7 +91,3 @@ C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control 
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System.pdb
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System.genruntimeconfig.cache
 C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\ref\CNC Program Control System.dll
-C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC_Program_Control_System.Properties.Resources.resources
-C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\CNC Program Control System.csproj.GenerateResource.cache
-C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\obj\Debug\net8.0-windows\Styles\General.baml
-C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\Newtonsoft.Json.dll

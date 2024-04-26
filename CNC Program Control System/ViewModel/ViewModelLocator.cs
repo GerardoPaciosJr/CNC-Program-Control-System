@@ -9,6 +9,7 @@ namespace CNC_Program_Control_System
 {
     class ViewModelLocator
     {
+        public MainWindowViewModel MainWindowVWM => ServiceLocator.Current.GetInstance<MainWindowViewModel>();
         public MainPageViewModel MainPageVWM => ServiceLocator.Current.GetInstance<MainPageViewModel>();
     }
 }

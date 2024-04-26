@@ -52,23 +52,37 @@ namespace CNC_Program_Control_System
         {
             using (BaseDBContext ctx = new BaseDBContext())
             {
-                using (SqlConnection connection = new SqlConnection(ctx.DefaultConnectionString().ToString()))
-                {
-                    connection.Open();
-                    string createDatabaseQuery = $"CREATE DATABASE {db.DatabaseName}";
-                    SqlCommand command = new SqlCommand(createDatabaseQuery, connection);
-                    command.ExecuteNonQuery();
+                ctx.Database.SetConnectionString(ctx.DefaultConnectionString().ToString());
+                ctx.Database.SetCommandTimeout(0);
+                string createDatabaseQuery = $"CREATE DATABASE {db.DatabaseName}; ";
+                ctx.Database.ExecuteSqlRaw(FormattableStringFactory.Create(createDatabaseQuery).ToString());
 
-                    string createUserQuery = $"CREATE LOGIN {db.DatabaseUser} WITH PASSWORD = '{db.DatabasePassword}';" +
-                                                $"CREATE USER {db.DatabaseUser} FOR LOGIN {db.DatabaseUser}; " +
-                                                $"USE {db.DatabaseName}; " +
-                                                $"CREATE USER {db.DatabaseUser} FOR LOGIN {db.DatabaseUser}; " +
-                                                $"USE {db.DatabaseName}; " +
-                                                $"ALTER ROLE db_owner ADD MEMBER {db.DatabaseUser};";
-                    SqlCommand createUserCommand = new SqlCommand(createUserQuery, connection);
-                    await createUserCommand.ExecuteNonQueryAsync();
+                string createUserQuery = $"CREATE LOGIN {db.DatabaseUser} WITH PASSWORD = '{db.DatabasePassword}'; " +
+                                         $"CREATE USER {db.DatabaseUser} FOR LOGIN {db.DatabaseUser}; " +
+                                         $"USE {db.DatabaseName}; " +
+                                         $"CREATE USER {db.DatabaseUser} FOR LOGIN {db.DatabaseUser}; " +
+                                         $"USE {db.DatabaseName}; " +
+                                         $"ALTER ROLE db_owner ADD MEMBER {db.DatabaseUser};";
+                ctx.Database.ExecuteSqlRaw(FormattableStringFactory.Create(createUserQuery).ToString());
 
-                }
+                //using (SqlConnection connection = new SqlConnection(ctx.DefaultConnectionString().ToString()))
+                //{
+                //    connection.Open();
+                //    string createDatabaseQuery = $"CREATE DATABASE {db.DatabaseName}";
+                //    SqlCommand command = new SqlCommand(createDatabaseQuery, connection);
+                //    command.ExecuteNonQuery();
+
+                //    string createUserQuery = $"CREATE LOGIN {db.DatabaseUser} WITH PASSWORD = '{db.DatabasePassword}';" +
+                //                                $"CREATE USER {db.DatabaseUser} FOR LOGIN {db.DatabaseUser}; " +
+                //                                $"USE {db.DatabaseName}; " +
+                //                                $"CREATE USER {db.DatabaseUser} FOR LOGIN {db.DatabaseUser}; " +
+                //                                $"USE {db.DatabaseName}; " +
+                //                                $"ALTER ROLE db_owner ADD MEMBER {db.DatabaseUser};";
+                //    SqlCommand createUserCommand = new SqlCommand(createUserQuery, connection);
+                //    await createUserCommand.ExecuteNonQueryAsync();
+                //    connection.Close();
+
+                //}
             }
         }
 
@@ -85,7 +99,7 @@ namespace CNC_Program_Control_System
             using (BaseDBContext ctx = new BaseDBContext())
             {
                 ctx.DatabaseCredential = db;
-                ctx.Database.BeginTransaction();
+                //ctx.Database.BeginTransaction();
                 await ctx.Database.ExecuteSqlAsync(FormattableStringFactory.Create(sqlScript));
 
             }

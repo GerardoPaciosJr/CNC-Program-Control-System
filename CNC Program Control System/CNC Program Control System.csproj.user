@@ -22,5 +22,8 @@
     <Page Update="Styles\InputTextFields.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>
