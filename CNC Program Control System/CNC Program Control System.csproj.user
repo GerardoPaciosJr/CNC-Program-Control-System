@@ -7,6 +7,20 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\Control\CustomLoadingControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\DBConfiguration.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\LoadingControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Control\StatusLabelBlock.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -20,6 +34,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Styles\InputTextFields.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\CustomLoadingControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\DBConfiguration.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\LoadingControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Control\StatusLabelBlock.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\MainPage.xaml">

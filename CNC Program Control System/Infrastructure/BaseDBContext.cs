@@ -44,7 +44,7 @@ namespace CNC_Program_Control_System
             optionsBuilder.UseSqlServer(ConnectionString);
             optionsBuilder.EnableSensitiveDataLogging(true);
 
-            SaveConnection();
+            if (DatabaseCredential != null) { SaveConnection(); }
             base.OnConfiguring(optionsBuilder);
         }
 
@@ -67,6 +67,7 @@ namespace CNC_Program_Control_System
 
         public void SaveConnection()
         {
+            //To be modified
             //Configuration.GetSection("ConnectionStrings:dbsetting").Value = "Server=;database=;uid=;password=;TrustServerCertificate=True;";
             string pth = @"C:\Users\Jhe Pacios\source\repos\CNC Program Control System\CNC Program Control System\bin\Debug\net8.0-windows\appsettings.json"; 
             var json = File.ReadAllText(pth);

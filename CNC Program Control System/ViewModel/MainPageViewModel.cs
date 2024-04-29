@@ -1,7 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
+using Newtonsoft.Json.Linq;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
@@ -61,7 +63,7 @@ namespace CNC_Program_Control_System
             set { SetProperty(ref _NewDBPassword, value); }
         }
 
-        public string isConfigView
+        public bool isConfigView
         {
             get { return _isConfigView; }
             set { _isConfigView = value; RaisePropertyChanged(); }
@@ -72,13 +74,17 @@ namespace CNC_Program_Control_System
             get { return _connectionStatus; }
             set { _connectionStatus = value; RaisePropertyChanged(); }
         }
+
+        public bool ServersLoading
+        {
+            get { return _serversLoading; }
+            set { _serversLoading = value; RaisePropertyChanged(); }
+        }
         #endregion
 
         #region Public Properties - Delegate Commands
-        public DelegateCommand<object> PageLoadedCommand { get; set; }
+        public DelegateCommand PageLoadedCommand { get; set; }
         public DelegateCommand<object> TestConnectionCommand { get; set; }
-        public DelegateCommand<object> CreateDBCommand { get; set; }
-        public DelegateCommand<object> CreateTablesCommand { get; set; }
         #endregion
 
         #region Private Properties - Common
@@ -94,18 +100,18 @@ namespace CNC_Program_Control_System
         private string _NewDBPassword;
 
         private DatabaseCredentialModel _DatabaseCredential;
+        private bool _serversLoading;
+        private bool _isConfigView;
 
         //private DatabaseCredentialModel _databaseCredential = new DatabaseCredentialModel();
         #endregion
 
         #region Public Properties - Common
         public bool _isConnected = false; 
-        private string _isConfigView = "Collapsed";
-        private string _connectionStatus = "Connecting.";
+        private string _connectionStatus = "Connecting";
         #endregion
 
         #region Private Properties - Interface
-        //private readonly IAppDetachedService _AppDetachedServices;
         private readonly IBaseDBContext _BaseDBContext;
         private FluentValidation.Results.ValidationResult Result = new FluentValidation.Results.ValidationResult();
         #endregion
@@ -115,20 +121,18 @@ namespace CNC_Program_Control_System
         #region Constructor
         public MainPageViewModel(IBaseDBContext baseDBContext, IAuthenticationService authenticationService, IConfigService configService)
         {
-
             _BaseDBContext = baseDBContext;
             AuthenticationService = authenticationService;
             ConfigService = configService;
 
             DatabaseCredential = new DatabaseCredentialModel();
-
             InitCommands();
 
             Application.Current.Dispatcher.BeginInvoke(
             DispatcherPriority.ApplicationIdle,
             new Action(() =>
             {
-                PageLoadedCommand.Execute(this);
+                PageLoadedCommand.Execute();
                 return;
             }));
         }
@@ -136,30 +140,29 @@ namespace CNC_Program_Control_System
 
         #region Public Methods - Async
 
-        private async Task LoadedAsync(object param)
+        private async Task LoadedAsync()
         {
-            TestConnection(param, false);
-            await Task.Delay(0);
+            isConfigView = false;
+            ServersLoading = true;
+            var serverLoader = new BackgroundWorker();
+            serverLoader.DoWork += ((sender, e) => e.Result = TestConnection());
+            serverLoader.RunWorkerCompleted += ((sender, e) =>
+            {
+                //if(e.Result(0).ToString() == "false")
+                //{
+                //    isConfigView = true;
+                //}
+                //ServersLoading = false;
+            });
+            serverLoader.RunWorkerAsync();
         }
         public async Task TestConnectionAsync(object param)
         {
-            if(!TestConnection(param, true))
+            if(TestConnection(param, true))
             {
-                CreateDatabase();
-                CreateTables();
+                isConfigView = false;
             }
             //await Task.Delay(0);
-        }
-        public async Task CreateDBAsync(object param)
-        {
-            CreateDatabase();
-            //MessageBox.Show("Create Database", "Database Created!", MessageBoxButton.OK, MessageBoxImage.Information);
-            //await Task.Delay(0);
-        }
-        public async Task CreateTablesAsync(object param)
-        {
-            CreateTables();
-            MessageBox.Show("Create Tables", "Tables Created!", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         #endregion
 
@@ -167,9 +170,7 @@ namespace CNC_Program_Control_System
         private void InitCommands()
         {
             TestConnectionCommand = new DelegateCommand<object>(async (param) => await RunCommandAsync(() => IsNotBusy, async () => { await TestConnectionAsync(param); }));
-            CreateDBCommand = new DelegateCommand<object>(async (param) => await RunCommandAsync(() => IsNotBusy, async () => { await CreateDBAsync(param); }));
-            CreateTablesCommand = new DelegateCommand<object>(async (param) => await RunCommandAsync(() => IsNotBusy, async () => { await CreateTablesAsync(param); }));
-            PageLoadedCommand = new DelegateCommand<object>(async (param) => await RunCommandAsync(() => IsNotBusy, async () => { await LoadedAsync(param); }));
+            PageLoadedCommand = new DelegateCommand(async () => await RunCommandAsync(() => IsNotBusy, async () => { await LoadedAsync(); }));
         }
 
         private void GetDatabaseCredential()
@@ -179,7 +180,7 @@ namespace CNC_Program_Control_System
 
         public bool TestConnection(object param, bool isTest)
         {
-            connectionStatus = "Connecting.";
+            connectionStatus = "Connecting";
             GetDatabaseCredential();
 
             //AttachConfigValidators();
@@ -192,14 +193,45 @@ namespace CNC_Program_Control_System
             if (IsValidDBConnection)
             {
                 if (isTest) MessageBox.Show("Test Connection Successful!", "Test Connection", MessageBoxButton.OK, MessageBoxImage.Information);
-                isConfigView = "Collapsed";
                 connectionStatus = "Connected";
                 return true;
             }
 
-            //if (isTest) MessageBox.Show("Unable to connect to server.", "Test Connection", MessageBoxButton.OK, MessageBoxImage.Warning);
-            isConfigView = "Visible";
-            connectionStatus = "Unable to Connect.";
+            var Result = MessageBox.Show("Create the database and save the following configuration?", "Test Connection", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            connectionStatus = "Unable to Connect";
+            if (Result == MessageBoxResult.Yes)
+            {
+                CreateDatabase();
+                CreateTables();
+                return true;
+            }
+            return false;
+
+        }
+
+        public bool TestConnection()
+        {
+            connectionStatus = "Connecting"; //To be move
+            GetDatabaseCredential();
+
+            //AttachConfigValidators();
+            //Result = DatabaseCredential.Validator.Validate(DatabaseCredential);
+            //if (!Result.IsValid) { return false; }
+
+            bool IsValidDBConnection = AuthenticationService.IsValidDBConnection(false);
+            DatabaseCredential = AuthenticationService.DatabaseConnectionModel;
+
+            if (IsValidDBConnection)
+            {
+                connectionStatus = "Connected";
+                ServersLoading = false;
+                isConfigView = false;
+                return true;
+            }
+
+            isConfigView = true;
+            ServersLoading = false;
+            connectionStatus = "Unable to Connect";
             //SwitchCredentialAsync(param);
             return false;
 
@@ -207,6 +239,7 @@ namespace CNC_Program_Control_System
 
         private void CreateDatabase()
         {
+            connectionStatus = "Creating Database";
             NewDatabaseModel databaseModel = new NewDatabaseModel
             {
                 DatabaseName = DatabaseCredential.DatabaseName,
@@ -219,16 +252,13 @@ namespace CNC_Program_Control_System
                 return;
             }
             ConfigService.CreateNewDBAsync(databaseModel);
-            //await ConfigService.CreateNewDBTablesAsync(DatabaseCredential);
-            //MessageBox.Show("Database and Tables has been Created!", "Create Database", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void CreateTables()
         {
+            connectionStatus = "Creating Tables";
             ConfigService.CreateNewDBTablesAsync(DatabaseCredential);
             MessageBox.Show("Database and Tables has been Created!", "Create Database", MessageBoxButton.OK, MessageBoxImage.Information);
-            isConfigView = "Collapsed";
-            connectionStatus = "Connected.";
         }
 
         private void AttachConfigValidators()

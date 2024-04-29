@@ -6,9 +6,11 @@
       xmlns:local="clr-namespace:CNC_Program_Control_System" 
       DataContext="{Binding MainPageVWM, Source={StaticResource VWMLocator}}"
       mc:Ignorable="d"
-      Title="Start">
+      Title="Start"
+      x:Name="_mainpage">
 
 
+    
 
     <Grid x:Name="_Parent">
         <Grid>
@@ -29,7 +31,6 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
-
                     </Grid>
                 </Grid>
             </Grid>
@@ -48,469 +49,35 @@
                     <Grid Grid.Row="0">
                         <Grid>
                             <Viewbox>
-                                <Image Source="/Images/eXcellerant-logo.png" Width="150" Height="50"/>
+                                <Image x:Name="HeaderImage">
+                                    <Image.Style>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Source" Value="/Images/eXcellerant-logo.png" />
+                                            <Setter Property="Width" Value="80" />
+                                            <Setter Property="Height" Value="30" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding isConfigView}" Value="True">
+                                                    <DataTrigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetProperty="Width" Duration="0:0:0.2" To="80" BeginTime="0:0:0.0"/>
+                                                                <DoubleAnimation Storyboard.TargetProperty="Height" Duration="0:0:0.2" To="15" BeginTime="0:0:0.0"/>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </DataTrigger.EnterActions>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
                             </Viewbox>
                         </Grid>
                     </Grid>
-
                     <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*" />
-                            <ColumnDefinition Width="60*" />
-                            <ColumnDefinition Width="20*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="1">
-                            <Grid x:Name="_DBCredential" Opacity="1" Visibility="{Binding isConfigView}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="5*"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="90*"/>
-                                </Grid.RowDefinitions>
-
-                                <!--Start - Connection String Title -->
-                                <Grid Grid.Row="1" VerticalAlignment="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="5*" />
-                                        <ColumnDefinition Width="95*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
-                                    <Grid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
-                                        <Image Source="/Images/eXcellerant_mfg_icon.jpg"/>
-                                    </Grid>
-
-                                    <Grid Grid.Column="1" HorizontalAlignment="Left">
-                                        <Label Content="Connection Setting" Typography.Capitals="AllSmallCaps"/>
-                                    </Grid>
-                                </Grid>
-                                <!--End - Connection String Title -->
-
-                                <!--Start - Connection fields -->
-                                <Grid Grid.Row="2">
-
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="5*" />
-                                        <ColumnDefinition Width="90*" />
-                                        <ColumnDefinition Width="5*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-
-                                    <Grid Grid.Row="0" Grid.Column="1">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <Grid Grid.Row="0" HorizontalAlignment="Left">
-                                            <Label Content="Host Name" Typography.Capitals="Normal"/>
-                                        </Grid>
-
-                                        <Grid Grid.Row="1" HorizontalAlignment="Stretch" >
-                                            <AdornerDecorator>
-                                                <TextBox x:Name="_TextDBHost" 
-                                                 HorizontalAlignment="Stretch" 
-                                                 VerticalAlignment="Center">
-                                                    <Binding Path="DatabaseCredential.ServerHostName" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
-                                                        <Binding.ValidationRules>
-                                                            <local:EmptyStringValidationRule/>
-                                                        </Binding.ValidationRules>
-                                                    </Binding>
-                                                </TextBox>
-                                            </AdornerDecorator>
-                                            <Border ></Border>
-                                        </Grid>
-                                    </Grid>
-
-                                    <Grid Grid.Row="1" Grid.Column="1">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <Grid Grid.Row="0" HorizontalAlignment="Left">
-                                            <Label Content="Database Name" Typography.Capitals="Normal" />
-                                        </Grid>
-
-                                        <Grid Grid.Row="1" HorizontalAlignment="Stretch" >
-                                            <AdornerDecorator>
-                                                <TextBox x:Name="_TextDBName" 
-                                                 HorizontalAlignment="Stretch" 
-                                                 VerticalAlignment="Center">
-                                                    <Binding Path="DatabaseCredential.DatabaseName" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
-                                                        <Binding.ValidationRules>
-                                                            <local:EmptyStringValidationRule/>
-                                                        </Binding.ValidationRules>
-                                                    </Binding>
-                                                </TextBox>
-                                            </AdornerDecorator>
-                                            <Border ></Border>
-                                        </Grid>
-                                    </Grid>
-
-                                    <Grid Grid.Row="2" Grid.Column="1">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="45*" />
-                                            <ColumnDefinition Width="10*" />
-                                            <ColumnDefinition Width="45*" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <Grid Grid.Column="0">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                            </Grid.RowDefinitions>
-
-                                            <Grid Grid.Row="0" HorizontalAlignment="Left">
-                                                <Label Content="Username" Typography.Capitals="Normal" />
-                                            </Grid>
-
-                                            <Grid Grid.Row="1" HorizontalAlignment="Stretch" >
-                                                <AdornerDecorator>
-                                                    <TextBox x:Name="_TextDBUsername" 
-                                                     HorizontalAlignment="Stretch" 
-                                                     VerticalAlignment="Center">
-                                                        <Binding Path="DatabaseCredential.DatabaseUser" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
-                                                            <Binding.ValidationRules>
-                                                                <local:EmptyStringValidationRule/>
-                                                            </Binding.ValidationRules>
-                                                        </Binding>
-                                                    </TextBox>
-                                                </AdornerDecorator>
-                                                <Border></Border>
-                                            </Grid>
-                                        </Grid>
-
-                                        <Grid Grid.Column="3">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                            </Grid.RowDefinitions>
-
-                                            <Grid Grid.Row="0" HorizontalAlignment="Left">
-                                                <Label Content="Password" Typography.Capitals="Normal" />
-                                            </Grid>
-
-                                            <Grid Grid.Row="1" HorizontalAlignment="Stretch" >
-                                                <AdornerDecorator>
-                                                    <TextBox x:Name="_TextDBPassword"
-                                                     HorizontalAlignment="Stretch" 
-                                                     VerticalAlignment="Center"
-                                                     FontFamily="pack://application:,,,/Resources/#password">
-                                                        <Binding Path="DatabaseCredential.DatabasePassword" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
-                                                            <Binding.ValidationRules>
-                                                                <local:EmptyStringValidationRule/>
-                                                            </Binding.ValidationRules>
-                                                        </Binding>
-                                                        <TextBox.InputBindings>
-                                                            <!--Disable CTRL+C (COPY) -->
-                                                            <KeyBinding Command="ApplicationCommands.NotACommand"
-                                                                Key="C" Modifiers="Control" />
-                                                            <!--Disable CTRL+X (CUT) -->
-                                                            <KeyBinding Command="ApplicationCommands.NotACommand"
-                                                                Key="X" Modifiers="Control" />
-                                                        </TextBox.InputBindings>
-                                                        <TextBox.ContextMenu>
-                                                            <!--Hide context menu where you could copy/cut as well -->
-                                                            <ContextMenu Visibility="Collapsed" />
-                                                        </TextBox.ContextMenu>
-                                                    </TextBox>
-                                                </AdornerDecorator>
-                                                <Border></Border>
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-
-                                    <Grid Grid.Row="3" Grid.Column="1">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="30*" />
-                                            <ColumnDefinition Width="10*" />
-                                            <ColumnDefinition Width="60*" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <Grid Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" >
-                                            <Button x:Name="_btnTestConnection" 
-                                            Content="Setup Database"
-                                            Command="{Binding TestConnectionCommand}">
-                                            </Button>
-                                            <!--<Button x:Name="_btnTestConnection"
-                                            Command="{Binding TestConnectionCommand}"
-                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Page}}}"
-                                            ContentText="{StaticResource sTestConnection}" 
-                                            IsEnabled="{Binding IsNotBusy}">
-                                    </Button>-->
-                                        </Grid>
-
-                                    </Grid>
-
-                                    <Grid Grid.Row="4" Grid.Column="1">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="60*" />
-                                            <ColumnDefinition Width="10*" />
-                                            <ColumnDefinition Width="30*" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-
-                                        <!--<Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" >
-                                    <Button x:Name="_btnCreateTables" 
-                                            Content="Create Tables"
-                                            Command="{Binding CreateTablesCommand}">
-                                    </Button>
-                                </Grid>-->
-
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                            <!--End - Connection fields -->
-                        </Grid>
-                        <!--<Grid Grid.Column="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="5*"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="90*"/>
-                        </Grid.RowDefinitions>
-
-                        -->
-                        <!--Start - Connection String Title -->
-                        <!--
-                        <Grid Grid.Row="1" VerticalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5*" />
-                                <ColumnDefinition Width="95*" />
-                            </Grid.ColumnDefinitions>
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">
-                                <Image Source="/Images/eXcellerant_mfg_icon.jpg"/>
-                            </Grid>
-
-                            <Grid Grid.Column="1" HorizontalAlignment="Left">
-                                <Label Content="New Database Setup" Typography.Capitals="AllSmallCaps"/>
-                            </Grid>
-                        </Grid>
-                        -->
-                        <!--End - Connection String Title -->
-
-                        <!--Start - Connection fields -->
-                        <!--
-                        <Grid Grid.Row="2">
-
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5*" />
-                                <ColumnDefinition Width="90*" />
-                                <ColumnDefinition Width="5*" />
-                            </Grid.ColumnDefinitions>
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0" Grid.Column="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-
-                                <Grid Grid.Row="0" HorizontalAlignment="Left">
-                                    <Label Content="Database Name" Typography.Capitals="Normal" />
-                                </Grid>
-
-                                <Grid Grid.Row="1" HorizontalAlignment="Stretch" >
-                                    <AdornerDecorator>
-                                        <TextBox x:Name="_TextNewDBName" 
-                                                 HorizontalAlignment="Stretch" 
-                                                 VerticalAlignment="Center">
-                                            <Binding Path="NewDatabaseName" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
-                                                <Binding.ValidationRules>
-                                                    <local:EmptyStringValidationRule/>
-                                                </Binding.ValidationRules>
-                                            </Binding>
-                                        </TextBox>
-                                    </AdornerDecorator>
-                                    <Border ></Border>
-                                </Grid>
-                            </Grid>
-
-                            <Grid Grid.Row="1" Grid.Column="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="45*" />
-                                    <ColumnDefinition Width="10*" />
-                                    <ColumnDefinition Width="45*" />
-                                </Grid.ColumnDefinitions>
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-
-                                <Grid Grid.Column="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
-                                    <Grid Grid.Row="0" HorizontalAlignment="Left">
-                                        <Label Content="Database User" Typography.Capitals="Normal" />
-                                    </Grid>
-
-                                    <Grid Grid.Row="1" HorizontalAlignment="Stretch" >
-                                        <AdornerDecorator>
-                                            <TextBox x:Name="_TextNewDBUsername" 
-                                                     HorizontalAlignment="Stretch" 
-                                                     VerticalAlignment="Center">
-                                                <Binding Path="NewDBUsername" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
-                                                    <Binding.ValidationRules>
-                                                        <local:EmptyStringValidationRule/>
-                                                    </Binding.ValidationRules>
-                                                </Binding>
-                                            </TextBox>
-                                        </AdornerDecorator>
-                                        <Border></Border>
-                                    </Grid>
-                                </Grid>
-
-                                <Grid Grid.Column="3">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-
-                                    <Grid Grid.Row="0" HorizontalAlignment="Left">
-                                        <Label Content="Password" Typography.Capitals="Normal" />
-                                    </Grid>
-
-                                    <Grid Grid.Row="1" HorizontalAlignment="Stretch" >
-                                        <AdornerDecorator>
-                                            <TextBox x:Name="_TextNewDBPassword"
-                                                     HorizontalAlignment="Stretch" 
-                                                     VerticalAlignment="Center"
-                                                     FontFamily="pack://application:,,,/Resources/#password">
-                                                <Binding Path="NewDBPassword" UpdateSourceTrigger="PropertyChanged" ValidatesOnExceptions="True" Mode="TwoWay">
-                                                    <Binding.ValidationRules>
-                                                        <local:EmptyStringValidationRule/>
-                                                    </Binding.ValidationRules>
-                                                </Binding>
-
-                                                <TextBox.InputBindings>
-                                                    -->
-                        <!--Disable CTRL+C (COPY) -->
-                        <!--
-                                                    <KeyBinding Command="ApplicationCommands.NotACommand"
-                                                                Key="C" Modifiers="Control" />
-                                                    -->
-                        <!--Disable CTRL+X (CUT) -->
-                        <!--
-                                                    <KeyBinding Command="ApplicationCommands.NotACommand"
-                                                                Key="X" Modifiers="Control" />
-                                                </TextBox.InputBindings>
-                                                <TextBox.ContextMenu>
-                                                    -->
-                        <!--Hide context menu where you could copy/cut as well -->
-                        <!--
-                                                    <ContextMenu Visibility="Collapsed" />
-                                                </TextBox.ContextMenu>
-                                            </TextBox>
-                                        </AdornerDecorator>
-                                        <Border></Border>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-
-                            <Grid Grid.Row="2" Grid.Column="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="60*" />
-                                    <ColumnDefinition Width="10*" />
-                                    <ColumnDefinition Width="30*" />
-                                </Grid.ColumnDefinitions>
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-
-                                <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" >
-                                    <Button x:Name="_btnCreateDB" 
-                                            Content="Create Database"
-                                            Command="{Binding CreateDBCommand}">
-                                    </Button>
-                                </Grid>
-
-                            </Grid>
-                        </Grid>
-                        -->
-                        <!--End - Connection fields -->
-                        <!--
-                    </Grid>-->
+                        <local:DBConfiguration />
                     </Grid>
-
                     <Grid Grid.Row="2">
-                        <TextBlock Text="{Binding connectionStatus}" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                        <local:StatusLabelBlock/>
                     </Grid>
                 </Grid>
             </Grid>
